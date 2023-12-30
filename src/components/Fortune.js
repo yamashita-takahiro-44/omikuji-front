@@ -1,17 +1,23 @@
-// src/components/Fortune.js
 import React, { useState } from 'react';
-import axios from 'axios';
 
 const Fortune = () => {
   const [fortune, setFortune] = useState('');
 
-  const getFortune = async () => {
-    try {
-      const response = await axios.get('https://omikujiapp.fly.dev/fortunes');
-      setFortune(response.data.fortune); // ここを修正
-    } catch (error) {
-      console.error('Error fetching fortune:', error);
-    }
+  const getFortune = () => {
+    fetch('https://omikujiapp.fly.dev/fortunes')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('API Response:', data); // レスポンスをログに出力
+        setFortune(data.fortune); // データをセット
+      })
+      .catch(error => {
+        console.error('Error fetching fortune:', error);
+      });
   };
 
   return (
