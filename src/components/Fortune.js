@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Input, Button, Card } from 'antd';
+import logo from './logo.png'; // logo.pngのインポート
 
 const { Content } = Layout;
 
@@ -42,12 +43,13 @@ const Fortune = () => {
           {fortune && (
             <>
               <p style={{ marginTop: '20px' }}>{fortune}</p>
-              <Button type="link" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(fortune)}&url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer">
+              <Button type="link" href={`https://twitter.com/intent/tweet?text=祈願の言葉：${encodeURIComponent(prayer)} 結果：${encodeURIComponent(fortune)}&url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer">
                 Twitterで共有
               </Button>
             </>
           )}
         </Card>
+        <img src={logo} alt="ロゴ" style={{ width: '100%', position: 'absolute', bottom: 0 }} /> {/* ロゴの表示 */}
       </Content>
     </Layout>
   );
