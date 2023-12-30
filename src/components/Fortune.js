@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Input, Button, Card } from 'antd';
-import 'antd/dist/antd.css'; // AntDのスタイルをインポート
+import { Layout, Input, Button, Card } from 'antd';
+
+const { Content } = Layout;
 
 const Fortune = () => {
   const [fortune, setFortune] = useState('');
@@ -27,29 +28,20 @@ const Fortune = () => {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <Card title="2024年の運勢を占う" bordered={false} style={{ textAlign: 'center' }}>
-        <Input
-          placeholder="祈願の言葉を入力してください"
-          value={prayer}
-          onChange={e => setPrayer(e.target.value)}
-          style={{ marginBottom: '20px' }}
-        />
-        <Button type="primary" onClick={getFortune}>2024年の運勢を占う</Button>
-        {fortune && <p style={{ marginTop: '20px' }}>{fortune}</p>}
-      </Card>
-      <div style={{ marginTop: '20px', textAlign: 'center' }}>
-        {fortune && (
-          <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(fortune + 'https://omikuji-front.vercel.app/')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Share on Twitter
-          </a>
-        )}
-      </div>
-    </div>
+    <Layout style={{ minHeight: '100vh' }}>
+      <Content style={{ padding: '50px', textAlign: 'center' }}>
+        <Card title="2024年の運勢を占う" bordered={false}>
+          <Input
+            placeholder="祈願の言葉を入力してください"
+            value={prayer}
+            onChange={e => setPrayer(e.target.value)}
+            style={{ marginBottom: '20px' }}
+          />
+          <Button type="primary" onClick={getFortune}>占う</Button>
+          {fortune && <p style={{ marginTop: '20px' }}>{fortune}</p>}
+        </Card>
+      </Content>
+    </Layout>
   );
 };
 
