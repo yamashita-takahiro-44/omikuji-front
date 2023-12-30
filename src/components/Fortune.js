@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Layout, Input, Button, Card } from 'antd';
-import logo from './logo.png';
+import logo from './logo.png'; // ロゴ画像のインポート
+import fortuneGif from './fortune.gif'; // 占い中のGIF画像のインポート
 
 const { Content } = Layout;
 
@@ -8,7 +9,7 @@ const Fortune = () => {
   const [fortune, setFortune] = useState('');
   const [prayer, setPrayer] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const shareUrl = "https://omikujiapp.vercel.app";
+  const shareUrl = "https://omikujiapp.vercel.app"; // 共有するURL
 
   const getFortune = () => {
     setIsLoading(true);
@@ -47,10 +48,7 @@ const Fortune = () => {
           <Button type="primary" onClick={getFortune} disabled={isLoading}>占う</Button>
           {isLoading ? (
             <div style={{ marginTop: '20px' }}>
-              <video autoPlay loop style={{ maxWidth: '100%' }}>
-                <source src="omikuji.mov" type="video/mp4" />
-                お使いのブラウザは動画をサポートしていません。
-              </video>
+              <img src={fortuneGif} alt="占い中" />
             </div>
           ) : fortune && (
             <>
@@ -72,11 +70,8 @@ const Fortune = () => {
         }
       `}
     </style>
-        </Layout>
-      );
-    };
+    </Layout>
+  );
+};
 
 export default Fortune;
-
-
-
