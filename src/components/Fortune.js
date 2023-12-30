@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, Input, Button, Card, Spin } from 'antd';
+import { Layout, Input, Button, Card } from 'antd';
 import logo from './logo.png';
 
 const { Content } = Layout;
@@ -7,11 +7,11 @@ const { Content } = Layout;
 const Fortune = () => {
   const [fortune, setFortune] = useState('');
   const [prayer, setPrayer] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // ローディング状態
+  const [isLoading, setIsLoading] = useState(false);
   const shareUrl = "https://omikujiapp.vercel.app";
 
   const getFortune = () => {
-    setIsLoading(true); // ローディング開始
+    setIsLoading(true);
     fetch('https://omikujiapp.fly.dev/fortunes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -30,7 +30,7 @@ const Fortune = () => {
       console.error('Error fetching fortune:', error);
     })
     .finally(() => {
-      setIsLoading(false); // ローディング終了
+      setIsLoading(false);
     });
   };
 
@@ -46,7 +46,12 @@ const Fortune = () => {
           />
           <Button type="primary" onClick={getFortune} disabled={isLoading}>占う</Button>
           {isLoading ? (
-            <div style={{ marginTop: '20px' }}><Spin /> 占っています...</div>
+            <div style={{ marginTop: '20px' }}>
+              <video autoPlay loop style={{ maxWidth: '100%' }}>
+                <source src="omikuji.mov" type="video/mp4" />
+                お使いのブラウザは動画をサポートしていません。
+              </video>
+            </div>
           ) : fortune && (
             <>
               <p style={{ marginTop: '20px' }}>{fortune}</p>
@@ -58,17 +63,20 @@ const Fortune = () => {
         </Card>
       </Content>
       <img src={logo} alt="ロゴ" style={{ width: '100%', position: 'absolute', bottom: 0, left: 0, maxHeight: '500px' }} />
-      <style>
-        {`
-          @media (min-width: 768px) {
-            img {
-              maxHeight: 400px;
-            }
+    <style>
+      {`
+        @media (min-width: 768px) {
+          img {
+            maxHeight: 400px;
           }
-        `}
-      </style>
-    </Layout>
-  );
-};
+        }
+      `}
+    </style>
+        </Layout>
+      );
+    };
 
 export default Fortune;
+
+
+
