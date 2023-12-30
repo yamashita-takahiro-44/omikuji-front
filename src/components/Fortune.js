@@ -55,7 +55,7 @@ const Fortune = () => {
         {`
           @media (min-width: 768px) {
             img {
-              maxHeight: 50px;
+              maxHeight: 400px;
             }
           }
         `}
