@@ -57,11 +57,11 @@ const Fortune = () => {
         </Card>
       </Content>
       {isLoading && (
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 2 }}>
           <img src={fortuneGif} alt="占い中" style={{ maxWidth: '100%', maxHeight: '100%' }} />
         </div>
       )}
-      <img src={logo} alt="ロゴ" style={{ width: '100%', position: 'absolute', bottom: 0, left: 0, maxHeight: '500px', zIndex: -1 }} />
+      <img src={logo} alt="ロゴ" style={{ width: '100%', position: 'absolute', bottom: 0, left: 0, maxHeight: '500px', zIndex: 0 }} />
     </Layout>
   );
 };
