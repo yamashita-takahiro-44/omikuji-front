@@ -50,7 +50,16 @@ const Fortune = () => {
           )}
         </Card>
       </Content>
-      <img src={logo} alt="ロゴ" style={{ width: '100%', position: 'absolute', bottom: 0, left: 0 }} /> {/* ロゴの表示 */}
+      <img src={logo} alt="ロゴ" style={{ width: '100%', position: 'absolute', bottom: 0, left: 0, maxHeight: '100px' }} />
+      <style>
+        {`
+          @media (min-width: 768px) {
+            img {
+              maxHeight: 50px;
+            }
+          }
+        `}
+      </style>
     </Layout>
   );
 };
