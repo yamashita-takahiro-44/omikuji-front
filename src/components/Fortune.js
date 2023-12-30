@@ -61,7 +61,7 @@ const Fortune = () => {
           <img src={fortuneGif} alt="占い中" style={{ maxWidth: '100%', maxHeight: '100%' }} />
         </div>
       )}
-      <div style={{ position: 'absolute', width: '70%', left: '50%', bottom: 0, transform: 'translateX(-50%)', zIndex: 0 }}>
+      <div style={{ position: 'absolute', width: '200%', left: '50%', bottom: 0, transform: 'translateX(-50%)', zIndex: 0 }}>
         <img src={logo} alt="ロゴ"/>
       </div>
     </Layout>
