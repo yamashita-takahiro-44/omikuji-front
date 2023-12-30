@@ -6,6 +6,7 @@ const { Content } = Layout;
 const Fortune = () => {
   const [fortune, setFortune] = useState('');
   const [prayer, setPrayer] = useState('');
+  const shareUrl = "https://omikujiapp.vercel.app"; // 共有するURL
 
   const getFortune = () => {
     fetch('https://omikujiapp.fly.dev/fortunes', {
@@ -38,7 +39,14 @@ const Fortune = () => {
             style={{ marginBottom: '20px' }}
           />
           <Button type="primary" onClick={getFortune}>占う</Button>
-          {fortune && <p style={{ marginTop: '20px' }}>{fortune}</p>}
+          {fortune && (
+            <>
+              <p style={{ marginTop: '20px' }}>{fortune}</p>
+              <Button type="link" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(fortune)}&url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer">
+                Twitterで共有
+              </Button>
+            </>
+          )}
         </Card>
       </Content>
     </Layout>
