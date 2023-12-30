@@ -62,7 +62,7 @@ const Fortune = () => {
         </div>
       )}
       <div style={{ position: 'absolute', width: '70%', left: '50%', bottom: 0, transform: 'translateX(-50%)', zIndex: 0 }}>
-        <img src={logo} alt="ロゴ" style={{ maxHeight: '500px' }} />
+        <img src={logo} alt="ロゴ"/>
       </div>
     </Layout>
   );
