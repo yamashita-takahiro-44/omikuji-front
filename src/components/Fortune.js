@@ -30,7 +30,7 @@ const Fortune = () => {
   };
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ minHeight: '100vh', position: 'relative' }}>
       <Content style={{ padding: '50px', textAlign: 'center' }}>
         <Card title="2024年の運勢を占う" bordered={false}>
           <Input
@@ -49,8 +49,8 @@ const Fortune = () => {
             </>
           )}
         </Card>
-        <img src={logo} alt="ロゴ" style={{ width: '100%', position: 'absolute', bottom: 0 }} /> {/* ロゴの表示 */}
       </Content>
+      <img src={logo} alt="ロゴ" style={{ width: '100%', position: 'absolute', bottom: 0, left: 0 }} /> {/* ロゴの表示 */}
     </Layout>
   );
 };
