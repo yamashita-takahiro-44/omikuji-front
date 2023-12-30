@@ -37,7 +37,7 @@ const Fortune = () => {
 
   return (
     <Layout style={{ minHeight: '100vh', position: 'relative' }}>
-      <Content style={{ padding: '50px', textAlign: 'center' }}>
+      <Content style={{ padding: '50px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
         <Card title="2024年の運勢を占う" bordered={false}>
           <Input
             placeholder="祈願の言葉を入力してください"
@@ -61,7 +61,7 @@ const Fortune = () => {
           <img src={fortuneGif} alt="占い中" style={{ maxWidth: '100%', maxHeight: '100%' }} />
         </div>
       )}
-      <img src={logo} alt="ロゴ" style={{ width: '100%', position: 'absolute', bottom: 0, left: 0, maxHeight: '500px' }} />
+      <img src={logo} alt="ロゴ" style={{ width: '100%', position: 'absolute', bottom: 0, left: 0, maxHeight: '500px', zIndex: -1 }} />
     </Layout>
   );
 };
