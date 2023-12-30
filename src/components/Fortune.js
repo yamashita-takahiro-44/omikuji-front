@@ -46,11 +46,7 @@ const Fortune = () => {
             style={{ marginBottom: '20px' }}
           />
           <Button type="primary" onClick={getFortune} disabled={isLoading}>占う</Button>
-          {isLoading ? (
-            <div style={{ marginTop: '20px' }}>
-              <img src={fortuneGif} alt="占い中" />
-            </div>
-          ) : fortune && (
+          {fortune && (
             <>
               <p style={{ marginTop: '20px' }}>{fortune}</p>
               <Button type="link" href={`https://twitter.com/intent/tweet?text=祈願の言葉：${encodeURIComponent(prayer)} 結果：${encodeURIComponent(fortune)}&url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer">
@@ -60,16 +56,12 @@ const Fortune = () => {
           )}
         </Card>
       </Content>
+      {isLoading && (
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000 }}>
+          <img src={fortuneGif} alt="占い中" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+        </div>
+      )}
       <img src={logo} alt="ロゴ" style={{ width: '100%', position: 'absolute', bottom: 0, left: 0, maxHeight: '500px' }} />
-    <style>
-      {`
-        @media (min-width: 768px) {
-          img {
-            maxHeight: 400px;
-          }
-        }
-      `}
-    </style>
     </Layout>
   );
 };
