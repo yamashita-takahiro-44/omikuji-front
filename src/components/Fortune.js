@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Layout, Input, Button, Card } from 'antd';
-import logo from './logo.png'; // logo.pngのインポート
+import { Layout, Input, Button, Card, Spin } from 'antd';
+import logo from './logo.png';
 
 const { Content } = Layout;
 
 const Fortune = () => {
   const [fortune, setFortune] = useState('');
   const [prayer, setPrayer] = useState('');
-  const shareUrl = "https://omikujiapp.vercel.app"; // 共有するURL
+  const [isLoading, setIsLoading] = useState(false); // ローディング状態
+  const shareUrl = "https://omikujiapp.vercel.app";
 
   const getFortune = () => {
+    setIsLoading(true); // ローディング開始
     fetch('https://omikujiapp.fly.dev/fortunes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -26,6 +28,9 @@ const Fortune = () => {
     })
     .catch(error => {
       console.error('Error fetching fortune:', error);
+    })
+    .finally(() => {
+      setIsLoading(false); // ローディング終了
     });
   };
 
@@ -39,8 +44,10 @@ const Fortune = () => {
             onChange={e => setPrayer(e.target.value)}
             style={{ marginBottom: '20px' }}
           />
-          <Button type="primary" onClick={getFortune}>占う</Button>
-          {fortune && (
+          <Button type="primary" onClick={getFortune} disabled={isLoading}>占う</Button>
+          {isLoading ? (
+            <div style={{ marginTop: '20px' }}><Spin /> 占っています...</div>
+          ) : fortune && (
             <>
               <p style={{ marginTop: '20px' }}>{fortune}</p>
               <Button type="link" href={`https://twitter.com/intent/tweet?text=祈願の言葉：${encodeURIComponent(prayer)} 結果：${encodeURIComponent(fortune)}&url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer">
