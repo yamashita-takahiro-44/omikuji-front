@@ -6,8 +6,12 @@ const Fortune = () => {
   const [fortune, setFortune] = useState('');
 
   const getFortune = async () => {
-    const response = await axios.get('https://omikujiapp.fly.dev/fortunes');
-    setFortune(response.data.prediction);
+    try {
+      const response = await axios.get('https://omikujiapp.fly.dev/fortunes');
+      setFortune(response.data.fortune); // ここを修正
+    } catch (error) {
+      console.error('Error fetching fortune:', error);
+    }
   };
 
   return (
